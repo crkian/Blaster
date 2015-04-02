@@ -32,7 +32,7 @@ cerr << "Failed to initialise SDL: " << SDL_GetError() << endl;
 throw SF_ERROR_INIT;
 }
 // Create a new window
-g_window = SDL_CreateWindow("StarShip Fontana"
+g_window = SDL_CreateWindow("Blaster"
 , SDL_WINDOWPOS_CENTERED
 , SDL_WINDOWPOS_CENTERED
 , width
@@ -47,7 +47,7 @@ if (!g_renderer) {
 cerr << "Failed to create renderer: " << SDL_GetError() << endl;
 throw SF_ERROR_VIDEOMODE;
 }
-SDL_SetRenderDrawColor(g_renderer, 128, 128, 128, 255);
+SDL_SetRenderDrawColor(g_renderer, 0, 0, 0, 0);
 return SF_ERROR_NONE;
 }
 int main(int arc, char ** argv) {

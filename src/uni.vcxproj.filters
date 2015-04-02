@@ -58,9 +58,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\assets\alien.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="..\assets\coin.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -68,6 +65,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="..\assets\projectile.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\assets\alien.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\assets\item.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -96,6 +96,7 @@
   <ItemGroup>
     <Image Include="..\assets\alien.png" />
     <Image Include="..\assets\coin.png" />
+    <Image Include="..\assets\item.png" />
     <Image Include="..\assets\player.png" />
     <Image Include="..\assets\projectile.png" />
   </ItemGroup>
