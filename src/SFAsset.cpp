@@ -159,8 +159,9 @@ void SFAsset::HandleCollision() {
   }
 }
 
-void SFAsset::HandleCollisio() {
-  if(SFASSET_PLAYER == type || SFASSET_ALIEN == type) {
+
+  void SFAsset::HandleCollisio() {
+  if(SFASSET_PLAYER == type || SFASSET_WALL == type) {
     IsAlive();
   }
 }
