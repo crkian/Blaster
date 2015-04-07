@@ -33,7 +33,7 @@ private:
 
   shared_ptr<SFWindow>       sf_window;
 
-  list<shared_ptr<SFAsset>  >      player;
+  shared_ptr<SFAsset>        player;
   shared_ptr<SFBoundingBox>  app_box;
   list<shared_ptr<SFAsset> > projectiles;
   list<shared_ptr<SFAsset> > aliens;

@@ -9,7 +9,7 @@ SFApp::SFApp(std::shared_ptr<SFWindow> window) : fire(0), is_running(true), sf_w
 	auto player_pos = Point2(100.0f, 88.0f);
 	player->SetPosition(player_pos);
 
-		const int number_of_walls = 5;
+	const int number_of_walls = 5;
 	for(int i=0; i<number_of_walls; i++) {
 		// place an alien at width/number_of_walls * i
 		auto wall = make_shared<SFAsset>(SFASSET_WALL, sf_window);
@@ -112,36 +112,27 @@ void SFApp::OnUpdateWorld() {
 				a->HandleCollision();
 			}
 		}
-
-
-		// remove dead aliens (the long way)
-		list<shared_ptr<SFAsset>> tmp;
-		for(auto a : aliens) {
-			if(a->IsAlive()) {
-				tmp.push_back(a);
-			}
-		}
-		aliens.clear();
-		aliens = list<shared_ptr<SFAsset>>(tmp);
-	}
-	for(auto p : player) {
-		for(auto a : walls) {
-			if(p->CollidesWith(a)) {
-				p->HandleCollisio();
-				a->HandleCollisio();
-			}
-		}
 	}
 
+	// remove dead aliens (the long way)
+	list<shared_ptr<SFAsset>> tmp;
+	for(auto a : aliens) {
+		if(a->IsAlive()) {
+			tmp.push_back(a);
+		}
+	}
+	aliens.clear();
+	aliens = list<shared_ptr<SFAsset>>(tmp);
 }
+
+
+
 
 void SFApp::OnRender() {
 	SDL_RenderClear(sf_window->getRenderer());
 
 	// draw the player
-	for(auto p: player) {
-		if(p->IsAlive()) {p->OnRender();}
-	}
+	player->OnRender();
 
 	for(auto p: projectiles) {
 		if(p->IsAlive()) {p->OnRender();}
@@ -165,7 +156,7 @@ void SFApp::OnRender() {
 
 void SFApp::FireProjectile() {
 	auto pb = make_shared<SFAsset>(SFASSET_PROJECTILE, sf_window);
-	auto p  = player->GetPosition();
+	auto v  = player->GetPosition();
 	pb->SetPosition(v);
 	projectiles.push_back(pb);
 }
