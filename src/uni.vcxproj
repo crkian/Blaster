@@ -77,9 +77,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Font.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Random.cpp" />
     <ClCompile Include="SFApp.cpp" />
     <ClCompile Include="SFAsset.cpp" />
     <ClCompile Include="SFBoundingBox.cpp" />
@@ -87,8 +85,6 @@
     <ClCompile Include="SFWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Font.h" />
-    <ClInclude Include="Random.h" />
     <ClInclude Include="SFApp.h" />
     <ClInclude Include="SFAsset.h" />
     <ClInclude Include="SFBoundingBox.h" />
