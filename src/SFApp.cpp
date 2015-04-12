@@ -127,20 +127,11 @@ void SFApp::OnUpdateWorld() {
 				if(b->CollidesWith(player) || player->CollidesWith(b))  {
 					player->GoS();
 				}
-
 			}
 		}
 
-		for(auto p : projectiles) {
-			for(auto w : walls) {
-				if(p->CollidesWith(w)) {
-					p->HandleCollision();
-					w->HandleCollision();
 
-				}
 
-			}
-		}
 		// remove dead aliens (the long way)
 		list<shared_ptr<SFAsset>> tmp;
 		for(auto a : aliens) {
@@ -151,18 +142,11 @@ void SFApp::OnUpdateWorld() {
 		aliens.clear();
 		aliens = list<shared_ptr<SFAsset>>(tmp);
 
-		list<shared_ptr<SFAsset>> tmp;
-		for(auto b : walls) {
-			if(b->IsAlive()) {
-				tmp.push_back(b);
-			}
-		}
-		walls.clear();
-		walls = list<shared_ptr<SFAsset>>(tmp);
 	}
+
+
+
 }
-
-
 
 
 
