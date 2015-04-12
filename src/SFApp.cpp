@@ -1,6 +1,9 @@
 #include "SFApp.h"
-
+bool tr=true;
+bool fa=false;
 SFApp::SFApp(std::shared_ptr<SFWindow> window) : fire(0), is_running(true), sf_window(window) {
+
+
 	int canvas_w, canvas_h;
 	SDL_GetRendererOutputSize(sf_window->getRenderer(), &canvas_w, &canvas_h);
 
@@ -18,11 +21,12 @@ SFApp::SFApp(std::shared_ptr<SFWindow> window) : fire(0), is_running(true), sf_w
 		walls.push_back(wall);
 	}
 
-	const int number_of_aliens = 3;
+	const int number_of_aliens = 5;
 	for(int i=0; i<number_of_aliens; i++) {
 		// place an alien at width/number_of_aliens * i
-		auto alien = make_shared<SFAsset>(SFASSET_ALIEN, sf_window);
-		auto pos   = Point2((canvas_w/number_of_aliens+1) * i, 400.0f);
+		auto alien = make_shared<SFAsset>(SFASSET_ALIEN,sf_window);
+
+		auto pos   = Point2((canvas_w/number_of_walls) * i, 350.0f);
 		alien->SetPosition(pos);
 		aliens.push_back(alien);
 	}
@@ -33,6 +37,9 @@ SFApp::SFApp(std::shared_ptr<SFWindow> window) : fire(0), is_running(true), sf_w
 	auto pos  = Point2((200), 100);
 	coin->SetPosition(pos);
 	coins.push_back(coin);
+
+
+	score=0;
 }
 
 
@@ -97,6 +104,7 @@ void SFApp::OnUpdateWorld() {
 	// Update enemy positions
 	for(auto a : aliens) {
 		// do something here
+
 	}
 
 	// Update enemy positions
@@ -107,23 +115,57 @@ void SFApp::OnUpdateWorld() {
 	// Detect collisions
 	for(auto p : projectiles) {
 		for(auto a : aliens) {
-			if(p->CollidesWith(a)) {
-				p->HandleCollision();
-				a->HandleCollision();
+			for(auto b : walls)  {
+				if(p->CollidesWith(a)) {
+					p->HandleCollision();
+					a->HandleCollision();
+				}
+				if(p->CollidesWith(b)) {
+					p->HandleCollision();
+					b->HandleCollision();
+				}
+				if(b->CollidesWith(player) || player->CollidesWith(b))  {
+					player->GoS();
+				}
+
 			}
 		}
-	}
 
-	// remove dead aliens (the long way)
-	list<shared_ptr<SFAsset>> tmp;
-	for(auto a : aliens) {
-		if(a->IsAlive()) {
-			tmp.push_back(a);
+		for(auto p : projectiles) {
+			for(auto w : walls) {
+				if(p->CollidesWith(w)) {
+					p->HandleCollision();
+					w->HandleCollision();
+
+				}
+
+			}
 		}
+		// remove dead aliens (the long way)
+		list<shared_ptr<SFAsset>> tmp;
+		for(auto a : aliens) {
+			if(a->IsAlive()) {
+				tmp.push_back(a);
+			}
+		}
+		aliens.clear();
+		aliens = list<shared_ptr<SFAsset>>(tmp);
+
+		list<shared_ptr<SFAsset>> tmp;
+		for(auto b : walls) {
+			if(b->IsAlive()) {
+				tmp.push_back(b);
+			}
+		}
+		walls.clear();
+		walls = list<shared_ptr<SFAsset>>(tmp);
 	}
-	aliens.clear();
-	aliens = list<shared_ptr<SFAsset>>(tmp);
 }
+
+
+
+
+
 
 
 
@@ -149,6 +191,8 @@ void SFApp::OnRender() {
 	for(auto c: coins) {
 		c->OnRender();
 	}
+
+
 
 	// Switch the off-screen buffer to be on-screen
 	SDL_RenderPresent(sf_window->getRenderer());

@@ -1,4 +1,4 @@
-﻿Build started 08/04/2015 19:11:19.
+﻿Build started 12/04/2015 19:41:17.
      1>Project "C:\Users\blogs_000\Desktop\StarshipFontana-master\src\uni.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp SFApp.cpp SFAsset.cpp SFBoundingBox.cpp SFEvent.cpp SFWindow.cpp
@@ -13,22 +13,19 @@
      1>SFAsset.cpp(92): warning C4244: '=' : conversion from 'const float' to 'int', possible loss of data
      1>SFAsset.cpp(93): warning C4244: '=' : conversion from 'const float' to 'int', possible loss of data
          SFApp.cpp
-     1>SFApp.cpp(7): warning C4244: 'argument' : conversion from 'int' to 'const float', possible loss of data
-     1>SFApp.cpp(16): warning C4244: 'argument' : conversion from 'int' to 'const float', possible loss of data
-     1>SFApp.cpp(25): warning C4244: 'argument' : conversion from 'int' to 'const float', possible loss of data
+     1>SFApp.cpp(10): warning C4244: 'argument' : conversion from 'int' to 'const float', possible loss of data
+     1>SFApp.cpp(19): warning C4244: 'argument' : conversion from 'int' to 'const float', possible loss of data
+     1>SFApp.cpp(29): warning C4244: 'argument' : conversion from 'int' to 'const float', possible loss of data
+     1>SFApp.cpp(154): error C2086: 'std::list<_Ty> tmp' : redefinition
+                 with
+                 [
+                     _Ty=std::shared_ptr<SFAsset>
+                 ]
+                 SFApp.cpp(145) : see declaration of 'tmp'
          Main.cpp
          Generating Code...
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\blogs_000\Desktop\StarshipFontana-master\src\Debug\uni.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_image.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\blogs_000\Desktop\StarshipFontana-master\src\Debug\uni.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\blogs_000\Desktop\StarshipFontana-master\src\Debug\uni.lib" /MACHINE:X86 Debug\Main.obj
-         Debug\SFApp.obj
-         Debug\SFAsset.obj
-         Debug\SFBoundingBox.obj
-         Debug\SFEvent.obj
-         Debug\SFWindow.obj
-     1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
-         uni.vcxproj -> C:\Users\blogs_000\Desktop\StarshipFontana-master\src\Debug\uni.exe
-     1>Done Building Project "C:\Users\blogs_000\Desktop\StarshipFontana-master\src\uni.vcxproj" (Rebuild target(s)).
+     1>Done Building Project "C:\Users\blogs_000\Desktop\StarshipFontana-master\src\uni.vcxproj" (Rebuild target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:12.21
+Time Elapsed 00:00:15.13
