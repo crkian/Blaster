@@ -1,1 +1,13 @@
-src/uni.opensdf
+*.tlog
+*.obj
+*.log
+*.exe
+*.pdb
+*.ilk
+*.lastbuildstate
+*.idb
+*.opensdf
+uni.sdf
+*.sln
+uni.v11.suo
+*.filters
