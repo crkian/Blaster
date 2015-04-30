@@ -1,14 +1,21 @@
 #include "SFApp.h"
-bool tr=true;
-bool fa=false;
+#include "utilities.h"
+
 int north=1;
 int west = 2;
 int east = 3;
 int south = 4;
-int score = 0;
+    
 SFApp::SFApp(std::shared_ptr<SFWindow> window) : fire(0), is_running(true), sf_window(window) {
+	
+	TTF_Init();     // initialize font
 
-
+    dark_font = {67, 68, 69};       // dark grey
+    light_font = {187, 191, 194};   // light grey
+    fonts[0] = "assets/font.TTF";
+	
+	score = 0;
+    score_changed = true;
 	int canvas_w, canvas_h;
 	SDL_GetRendererOutputSize(sf_window->getRenderer(), &canvas_w, &canvas_h);
 
@@ -119,7 +126,7 @@ int SFApp::OnExecute() {
 void SFApp::OnUpdateWorld() {
 	// Update projectile positions
 	for(auto p: projectiles) {
-		p->GoNorth();
+		p->GoN();
 	}
 
 	for(auto c: coins) {
@@ -140,11 +147,20 @@ void SFApp::OnUpdateWorld() {
 		if(b->CollidesWith(player)) {
 			b->HandleCollision();
 			player->HandleCollision();
-			score -= 10;
-			cout << "-10 score, dont hit walls Total score is "<< score <<endl;
+			score ++;
 		}
 	}
+	    if (score_changed) {
+        font_score = renderText(std::to_string(score), "assets/font.TTF", light_font, 24, renderer);
+        score_changed = false;
+        if (score == 5) {
+            font_winner = renderText("You won!", fonts[0], light_font, 24, renderer);
+ 
+		}
+    }
+		    renderTexture(font_score, renderer, canvas_w * 4 / 10, canvas_h / 12);
 
+    
 
 
 	// Detect collisions

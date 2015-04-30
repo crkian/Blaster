@@ -57,7 +57,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL_ttf.h</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -92,6 +92,7 @@
     <ClInclude Include="SFEvent.h" />
     <ClInclude Include="SFMath.h" />
     <ClInclude Include="SFWindow.h" />
+    <ClInclude Include="utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\assets\alien.png" />
@@ -99,6 +100,9 @@
     <Image Include="..\assets\item.png" />
     <Image Include="..\assets\player.png" />
     <Image Include="..\assets\projectile.png" />
+    <Image Include="assets\coin.gif" />
+    <Image Include="assets\font.png" />
+    <Image Include="assets\item.gif" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
