@@ -17,6 +17,8 @@ using namespace std;
  * * Creating and destroying the app window
  * * Processing game events
  */
+
+
 class SFApp {
 public:
   SFApp(std::shared_ptr<SFWindow>);
@@ -25,15 +27,12 @@ public:
   int     OnExecute();
   void    OnUpdateWorld();
   void    OnRender();
-
   void    FireProjectile();
+
 private:
   SDL_Surface           * surface;
   bool                    is_running;
-
   shared_ptr<SFWindow>       sf_window;
-
-
   shared_ptr<SFAsset> player;
   shared_ptr<SFBoundingBox>  app_box;
   list<shared_ptr<SFAsset> > projectiles;
@@ -42,8 +41,8 @@ private:
   list<shared_ptr<SFAsset> > walls;
 
   int fire;
+  int movement;
 
-  unsigned int score;
 
   SFError OnInit();
 };

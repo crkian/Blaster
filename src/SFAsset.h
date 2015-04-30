@@ -37,11 +37,12 @@ public:
   virtual void      GoWest();
   virtual void      GoN();
   virtual void      GoS();
+  virtual void      Down();
   virtual void      GoNorth();
   virtual void      SetNotAlive();
   virtual bool      IsAlive();
   virtual void      HandleCollision();
-  virtual void      HandleCollisio();
+
 
   virtual bool                      CollidesWith(shared_ptr<SFAsset>);
   virtual shared_ptr<SFBoundingBox> GetBoundingBox();
