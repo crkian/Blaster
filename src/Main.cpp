@@ -2,6 +2,7 @@
 #include <vector> // Pull in the std::vector
 #include <memory> // Pull in std::shared_ptr
 
+/* https://github.com/crkian/Blaster */
 
 using namespace std; // So that we can write `vector` rather than `std::vector`
 #include "SFCommon.h"
