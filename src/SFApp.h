@@ -34,11 +34,12 @@ public:
 	int score;
 	bool score_changed;
 	SDL_Renderer* renderer;
+
 	/* Fonts */
-	std::string fonts[1];                   // font names
-	SDL_Color dark_font;                    // dark font color
-	SDL_Color light_font;                   // light font color
-	SDL_Texture*    font_score;  // holds text indicating score
+	std::string fonts[1];                   
+	SDL_Color dark_font;                    
+	SDL_Color light_font;                   
+	SDL_Texture*    font_score; 
 	 SDL_Texture*    font_winner;
 
 private:

@@ -1,21 +1,22 @@
 #include "SFApp.h"
 #include "utilities.h"
+#include "main.cpp"
 
 int north=1;
 int west = 2;
 int east = 3;
 int south = 4;
-    
+
 SFApp::SFApp(std::shared_ptr<SFWindow> window) : fire(0), is_running(true), sf_window(window) {
-	
+
 	TTF_Init();     // initialize font
 
-    dark_font = {67, 68, 69};       // dark grey
-    light_font = {187, 191, 194};   // light grey
-    fonts[0] = "assets/font.TTF";
-	
+	dark_font = {67, 68, 69};       // dark grey
+	light_font = {187, 191, 194};   // light grey
+	fonts[0] = "assets/font.TTF";
+
 	score = 0;
-    score_changed = true;
+	score_changed = true;
 	int canvas_w, canvas_h;
 	SDL_GetRendererOutputSize(sf_window->getRenderer(), &canvas_w, &canvas_h);
 
@@ -140,8 +141,6 @@ void SFApp::OnUpdateWorld() {
 	}
 
 
-
-
 	// Update enemy positions
 	for(auto b : walls) {
 		if(b->CollidesWith(player)) {
@@ -150,18 +149,6 @@ void SFApp::OnUpdateWorld() {
 			score ++;
 		}
 	}
-	    if (score_changed) {
-        font_score = renderText(std::to_string(score), "assets/font.TTF", light_font, 24, renderer);
-        score_changed = false;
-        if (score == 5) {
-            font_winner = renderText("You won!", fonts[0], light_font, 24, renderer);
- 
-		}
-    }
-		    renderTexture(font_score, renderer, canvas_w * 4 / 10, canvas_h / 12);
-
-    
-
 
 	// Detect collisions
 	for(auto p : projectiles) {
@@ -216,6 +203,9 @@ void SFApp::OnUpdateWorld() {
 }
 
 void SFApp::OnRender() {
+
+	int canvas_w = 640, canvas_h = 480;
+
 	SDL_RenderClear(sf_window->getRenderer());
 
 	// draw the player
@@ -236,7 +226,15 @@ void SFApp::OnRender() {
 	for(auto c: coins) {
 		c->OnRender();
 	}
+	if (score_changed) {
+		font_score = renderText(std::to_string(score), "assets/font.TTF", light_font, 24, renderer);
+		score_changed = false;
+		if (score == 5) {
+			font_winner = renderText("You won!", fonts[0], light_font, 24, renderer);
 
+		}
+	}
+	renderTexture(font_score, renderer, canvas_w * 4 / 10, canvas_h / 12);
 
 
 	// Switch the off-screen buffer to be on-screen
