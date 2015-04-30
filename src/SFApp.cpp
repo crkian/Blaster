@@ -253,3 +253,18 @@ void SFApp::FireProjectile() {
 	pb->SetPosition(v);
 	projectiles.push_back(pb);
 }
+
+
+void SFApp::clean_up() {
+
+    // Destroy textures
+    SDL_DestroyTexture(font_score);
+
+
+    // Destroy renderer and window
+    SDL_DestroyRenderer(renderer);
+
+
+    // Shuts down SDL
+    SDL_Quit();
+}

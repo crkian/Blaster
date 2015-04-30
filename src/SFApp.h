@@ -40,7 +40,7 @@ public:
 	SDL_Color dark_font;                    
 	SDL_Color light_font;                   
 	SDL_Texture*    font_score; 
-	 SDL_Texture*    font_winner;
+	SDL_Texture*    font_winner;
 
 private:
 	SDL_Surface           * surface;
@@ -58,5 +58,6 @@ private:
 
 
 	SFError OnInit();
+	void clean_up();
 };
 #endif
