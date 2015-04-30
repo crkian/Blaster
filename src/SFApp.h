@@ -36,7 +36,7 @@ public:
 	SDL_Renderer* renderer;
 
 	/* Fonts */
-	std::string fonts[1];                   
+	std::string fonts[2];                   
 	SDL_Color dark_font;                    
 	SDL_Color light_font;                   
 	SDL_Texture*    font_score; 

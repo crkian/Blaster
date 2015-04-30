@@ -206,6 +206,12 @@ void SFApp::OnRender() {
 
 	int canvas_w = 640, canvas_h = 480;
 
+	SDL_SetRenderDrawColor( renderer, 67, 68, 69, 255 );        // dark grey
+    SDL_RenderClear(renderer);
+
+	SDL_SetRenderDrawColor( renderer, 187, 191, 194, 255 );
+    
+
 	SDL_RenderClear(sf_window->getRenderer());
 
 	// draw the player
