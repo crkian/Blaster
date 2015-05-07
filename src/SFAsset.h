@@ -44,7 +44,7 @@ public:
   virtual void      HandleCollision();
 
 
-  virtual bool                      CollidesWith(shared_ptr<SFAsset>);
+  virtual bool     CollidesWith(shared_ptr<SFAsset>);
   virtual shared_ptr<SFBoundingBox> GetBoundingBox();
 private:
   // it would be nice if we could make this into a smart pointer,

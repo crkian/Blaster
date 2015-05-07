@@ -57,7 +57,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL_ttf.h</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -92,7 +92,6 @@
     <ClInclude Include="SFEvent.h" />
     <ClInclude Include="SFMath.h" />
     <ClInclude Include="SFWindow.h" />
-    <ClInclude Include="utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\assets\alien.png" />

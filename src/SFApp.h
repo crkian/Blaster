@@ -6,7 +6,7 @@
 #include <list>     // Pull in list
 #include <sstream>
 #include <SDL.h> 
-#include <SDL_ttf.h> 
+
 
 using namespace std;
 
@@ -32,15 +32,10 @@ public:
 	void    FireProjectile();
 
 	int score;
-	bool score_changed;
+
 	SDL_Renderer* renderer;
 
-	/* Fonts */
-	std::string fonts[2];                   
-	SDL_Color dark_font;                    
-	SDL_Color light_font;                   
-	SDL_Texture*    font_score; 
-	SDL_Texture*    font_winner;
+
 
 private:
 	SDL_Surface           * surface;
