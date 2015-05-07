@@ -31,9 +31,9 @@ public:
 	void    OnRender();
 	void    FireProjectile();
 
-	int score;
 
-	SDL_Renderer* renderer;
+
+
 
 
 
@@ -53,6 +53,7 @@ private:
 
 
 	SFError OnInit();
-	void clean_up();
+
 };
+
 #endif

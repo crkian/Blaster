@@ -1,16 +1,13 @@
 #include "SFApp.h"
-#include "main.cpp"
-
+bool tr=true;
+bool fa=false;
 int north=1;
 int west = 2;
 int east = 3;
 int south = 4;
-
+int score = 0;
 SFApp::SFApp(std::shared_ptr<SFWindow> window) : fire(0), is_running(true), sf_window(window) {
 
-
-
-	score = 0;
 
 	int canvas_w, canvas_h;
 	SDL_GetRendererOutputSize(sf_window->getRenderer(), &canvas_w, &canvas_h);
@@ -122,7 +119,7 @@ int SFApp::OnExecute() {
 void SFApp::OnUpdateWorld() {
 	// Update projectile positions
 	for(auto p: projectiles) {
-		p->GoN();
+		p->GoNorth();
 	}
 
 	for(auto c: coins) {
@@ -136,14 +133,19 @@ void SFApp::OnUpdateWorld() {
 	}
 
 
+
+
 	// Update enemy positions
 	for(auto b : walls) {
 		if(b->CollidesWith(player)) {
 			b->HandleCollision();
 			player->HandleCollision();
-			score ++;
+			score -= 10;
+			cout << "-10 score, dont hit walls Total score is "<< score <<endl;
 		}
 	}
+
+
 
 	// Detect collisions
 	for(auto p : projectiles) {
@@ -198,10 +200,6 @@ void SFApp::OnUpdateWorld() {
 }
 
 void SFApp::OnRender() {
-
-	
-    
-
 	SDL_RenderClear(sf_window->getRenderer());
 
 	// draw the player
@@ -222,7 +220,7 @@ void SFApp::OnRender() {
 	for(auto c: coins) {
 		c->OnRender();
 	}
-	
+
 
 
 	// Switch the off-screen buffer to be on-screen
@@ -234,18 +232,4 @@ void SFApp::FireProjectile() {
 	auto v  = player->GetPosition();
 	pb->SetPosition(v);
 	projectiles.push_back(pb);
-}
-
-
-void SFApp::clean_up() {
-
- 
-
-
-    // Destroy renderer and window
-    SDL_DestroyRenderer(renderer);
-
-
-    // Shuts down SDL
-    SDL_Quit();
 }
